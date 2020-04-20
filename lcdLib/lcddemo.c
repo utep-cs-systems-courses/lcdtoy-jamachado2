@@ -22,22 +22,28 @@ main()
     //    fillRectangle(35, 35, 60, 60, COLOR_BLUE);
   
   u_char j;
-
+  u_char i;
+  u_char x;
   /* dot */
   //for(j = 0; j < 90; j++)
   //drawPixel(10, 10, COLOR_YELLOW);
 
+  for(j = 0; j < 15; j++){
+    drawPixel(j, j, COLOR_BLUE);
+    drawPixel(0,j, COLOR_BLUE);
+    drawPixel(j,15,COLOR_YELLOW);
+  }
   /* right diagonal line*/
-  for(j = 0; j < 50; j++)
-  drawPixel(j, j, COLOR_BLUE);
+  //for(j = 0; j < 50; j++)
+  //drawPixel(j, j, COLOR_BLUE);
 
   /* vertical line */
-  for(j = 0; j < 50; j++)
-  drawPixel(0, j, COLOR_RED);
+  //for(j = 0; j < 50; j++)
+  //drawPixel(0, j, COLOR_RED);
 
   /* horizontal LINE */
-  for(j = 0; j < 50; j++)
-  drawPixel(j, 50, COLOR_YELLOW);
+  //for(j = 0; j < 50; j++)
+  //drawPixel(j, 50, COLOR_YELLOW);
 
   /* what's this a dot? */
   //for(j = 0; j < 90; j++)

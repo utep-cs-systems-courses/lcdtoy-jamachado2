@@ -161,28 +161,21 @@ void drawString5x7(u_char col, u_char row, char *string,
 void drawChar8x12(u_char rcol, u_char rrow,char c, u_int fgColorBGR, u_int bgColorBGR)
 
 {
-  u_char col=0;
-  u_char row=0;
-  u_char bit=0x01;
   u_char oc=c-0x20;
 
-  lcd_setArea(rcol,rrow,rcol+7,rrow+12);
-  while(row<13){
-    while(col<8){
+  lcd_setArea(rcol,rrow,rcol+7,rrow+11);
+  for(u_char col = 0; col < 12; col++){
+    for(u_char bit = 128; bit > 0; bit >>=1){
       u_int colorBGR=(font_8x12[oc][col] & bit) ? fgColorBGR : bgColorBGR;
       lcd_writeColor(colorBGR);
-      col++;
     }
-    col=0;
-    bit<<=1;
-    row++;
   }
 }
 
 void drawString8x12(u_char col,u_char row, char *string,u_int fgColorBGR, u_int byColorBGR)
 {
   u_char cols=col;
-  while(*string){
+  while(*string && (cols + 7 < screenWidth)){
     drawChar8x12(cols,row,*string++,fgColorBGR,byColorBGR);
     cols +=11;
   }

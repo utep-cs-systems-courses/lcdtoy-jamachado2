@@ -5,7 +5,6 @@
 #include <libTimer.h>
 #include "lcdutils.h"
 #include "lcddraw.h"
-//#include "lcddrawx.h"
 
 /** Initializes everything, clears the screen, draws "hello" and a square */
 int
@@ -16,16 +15,18 @@ main()
   u_char width = screenWidth, height = screenHeight;
 
   clearScreen(COLOR_BLACK);
+  enableWDTInterrupts();
+  led_init();
+  switch_init();
+  buzzer_init();
+  
+    drawString8x12(10,10, "Hello, Jose !!", COLOR_BLUE, COLOR_WHITE);
 
-    drawString8x12(25,20, "SCORE !!", COLOR_BLUE, COLOR_BLACK);
-    // draw a square with a rombo inside
-    //drawTriangle(30,30,15, COLOR_WHITE);
-    //drawSomething(60,60,60, COLOR_PINK);
-    //    fillRectangle(35, 35, 60, 60, COLOR_BLUE);
-    drawCustom(90,120,30, COLOR_WHITE);
-    //drawDiamond(20,20,40, COLOR_RED);
-    //drawSomething(10,10,30, COLOR_RED);
-    u_char j;
+    or_sr(0x18); // CPU off, GIE on */
+    /* draws a square with a triangle below */
+    // drawCustom(90,120,30, COLOR_WHITE);
+   
+    /* u_char j;
     u_char i ;
     /*
     for(j = 0; j<=10; j++){
